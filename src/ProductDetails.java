@@ -1,4 +1,4 @@
-package com.ecommerce;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ecommerce.DBConnection;
 
 /**
  * Servlet implementation class ProductDetails
@@ -47,7 +49,7 @@ public class ProductDetails extends HttpServlet {
             
             DBConnection conn = new DBConnection(props.getProperty("url"), props.getProperty("userid"), props.getProperty("password"));
             Statement stmt = conn.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            stmt.executeUpdate("insert into eproduct (name, price, date_added) values ('New Product', 17800.00, now())");
+            //stmt.executeUpdate("insert into eproduct (name, price, date_added) values ('New Product', 17800.00, now())");
             ResultSet rst = stmt.executeQuery("select * from eproduct");
             
             while (rst.next()) {
